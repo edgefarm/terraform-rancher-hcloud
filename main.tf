@@ -108,11 +108,3 @@ resource "rancher2_node_driver" "hetzner_node_driver" {
   url               = "https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.3.1/docker-machine-driver-hetzner_3.3.1_linux_amd64.tar.gz"
   whitelist_domains = ["storage.googleapis.com"]
 }
-
-output "rancher_admin_token" {
-  value = rancher2_bootstrap.setup_admin.token
-}
-
-output "hetzner_driver_id" {
-  value = rancher2_node_driver.hetzner_node_driver.id
-}
