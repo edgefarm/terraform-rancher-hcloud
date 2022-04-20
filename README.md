@@ -21,6 +21,7 @@ After the commands have been executed (takes a view minutes),
 Test your cluster:
 
 ```bash
-export KUBECONFIG=$(realpath ./kubeconfig.yaml)
-kubectl get po --all-namespaces
+terraform output rancher_url
 ```
+
+Open url in your webbrowser and login with user `admin` and your admin password.
