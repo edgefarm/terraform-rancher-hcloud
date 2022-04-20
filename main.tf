@@ -2,11 +2,11 @@ terraform {
   required_providers {
     helm = {
       source  = "hashicorp/helm"
-      version = "2.3.0"
+      version = "2.5.1"
     }
     rancher2 = {
       source  = "rancher/rancher2"
-      version = "1.17.2"
+      version = "1.23.0"
     }
   }
 }
@@ -94,7 +94,7 @@ resource "helm_release" "rancher" {
 resource "rancher2_bootstrap" "setup_admin" {
   provider         = rancher2.bootstrap
   password         = var.rancher_admin_password
-  current_password = var.rancher_admin_password
+  initial_password = var.rancher_admin_password
   telemetry        = true
   depends_on       = [helm_release.rancher]
 }
@@ -103,7 +103,7 @@ resource "rancher2_node_driver" "hetzner_node_driver" {
   provider          = rancher2.admin
   active            = true
   builtin           = false
-  name              = "Hetzner"
+  name              = "hetzner"
   ui_url            = "https://storage.googleapis.com/hcloud-rancher-v2-ui-driver/component.js"
   url               = "https://github.com/JonasProgrammer/docker-machine-driver-hetzner/releases/download/3.3.1/docker-machine-driver-hetzner_3.3.1_linux_amd64.tar.gz"
   whitelist_domains = ["storage.googleapis.com"]
